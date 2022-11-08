@@ -10,7 +10,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "xyz.teamgravity.firebasecloudmessaging"
+        applicationId "com.nanoware.pakokkunotification"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -67,7 +67,7 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     // firebase cloud messaging
-    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.0'
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.1.0'
 
     // viewmodel
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"
@@ -86,4 +86,8 @@ dependencies {
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+
+    //work
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
 }
