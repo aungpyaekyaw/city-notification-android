@@ -3,14 +3,13 @@ package com.nanoware.pakokkunotification.presentation.screen
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -33,19 +32,24 @@ fun MainScreen() {
             ){
                items((notificationState as NotificationStateData.Success).data){
                    Column(
-                       modifier = Modifier.padding(16.dp),
+                       modifier = Modifier.padding(4.dp),
                        verticalArrangement = Arrangement.spacedBy(4.dp)
                    ){
-                       Text(text = it.date, fontSize = 10.sp)
-                       Text(text = it.title, fontSize = 16.sp)
-                       Text(text = it.message, fontSize = 14.sp)
+                     NotificationCard(title = it.title, message = it.message, date = it.date)
                    }
 
                }
             }
         }
         is NotificationStateData.NoData -> {
-            Text(text = "No Data")
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                CircularProgressIndicator()
+            }
+
         }
         else -> {
             Text(text = "Error")
@@ -92,4 +96,32 @@ fun MainScreen() {
             Text(text = "Send notification")
         }
     }*/
+}
+
+@Composable
+fun NotificationCard(
+    title: String,
+    message: String,
+    date: String
+){
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(4.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ){
+            Text(text = date, fontSize = 10.sp)
+            Text(text = title, fontSize = 16.sp)
+            Text(text = message, fontSize = 14.sp)
+        }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewNotificationCard(){
+    NotificationCard(title = "Hello", message = "This is a test message.", date = "2022-11-09")
 }
