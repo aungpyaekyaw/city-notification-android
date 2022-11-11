@@ -89,13 +89,13 @@ class MainViewModel @Inject constructor(
                     message = ""
                     token = ""
 
-                    println("raheem: success!")
+                    println("mainViewModel: success!")
                 } else {
-                    println("raheem: noooo!")
+                    println("mainViewModel: noooo!")
                 }
 
             } catch (e: HttpException) {
-                println("raheem: ${e.message()}")
+                println("mainViewModel: ${e.message()}")
             }
         }
     }
